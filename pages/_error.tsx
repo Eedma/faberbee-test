@@ -1,15 +1,15 @@
 import { NextPage } from "next";
 
 interface ErrorProps {
-    message: string
+  message: string;
 }
 
 const Error: NextPage<ErrorProps> = ({ message }: ErrorProps) => (
+  <div>
     <div>
-        <div>
-            <p>{message}</p>
-        </div>
+      <p>{message}</p>
     </div>
+  </div>
 );
 
 export default Error;
