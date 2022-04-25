@@ -1,9 +1,9 @@
-import Document, { Head, Main, NextScript } from "next/document";
+import Document, { Head, Main, NextScript, Html } from "next/document";
 
 class MyDocument extends Document {
     render() {
         return (
-            <html lang="en">
+            <Html lang="en">
                 <Head>
                     <meta charSet="UTF-8" />
                     <meta
@@ -17,13 +17,14 @@ class MyDocument extends Document {
                         rel="stylesheet"
                         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
                     />
+                    <link rel="icon" href="/favicon.ico" />
                 </Head>
 
                 <body>
                     <Main />
                     <NextScript />
                 </body>
-            </html>
+            </Html>
         );
     }
 }
