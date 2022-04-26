@@ -5,18 +5,18 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { BlogData } from "../utils/types";
 
-const BlogCard = ({ post }: BlogData) => (
+const BlogCard = (props: { post: BlogData }) => (
   <Grid item xs={12} md={3}>
     <Card sx={{ display: "flex" }}>
       <CardContent sx={{ flex: 1 }}>
         <Typography component="h2" variant="h5">
-          {post.title}
+          {props.post.title}
         </Typography>
         <Typography variant="subtitle1" paragraph>
-          {post.body}
+          {props.post.body}
         </Typography>
         <Typography variant="subtitle1" color="primary">
-          {post.name}
+          {props.post.name}
         </Typography>
       </CardContent>
     </Card>

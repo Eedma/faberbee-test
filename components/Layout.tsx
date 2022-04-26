@@ -4,7 +4,11 @@ import Header from "./Header";
 
 const theme = createTheme();
 
-const Layout = ({ children }: any) => (
+type LayoutProps = {
+  children: React.ReactNode;
+};
+
+const Layout = ({ children }: LayoutProps) => (
   <ThemeProvider theme={theme}>
     <CssBaseline />
     <Header />

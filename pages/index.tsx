@@ -1,4 +1,3 @@
-import { NextPage } from "next";
 import Error from "./_error";
 import BlogCard from "../components/BlogCard";
 import Layout from "../components/Layout";
@@ -11,15 +10,9 @@ interface BlogProps {
   posts: PostData[];
   users: UserData[];
 }
-const Home: NextPage<BlogProps> = ({ posts, users }: BlogProps) => {
-  const blogData = blogDataHandler(posts, users);
-  console.log(blogData);
-  /* const data: any[] = blogDataHandler(posts, users); */
 
-  /*   let data: any[];
-
-  if (posts.length !== 0 && users.length !== 0) {
-  } */
+const Home = ({ posts, users }: BlogProps) => {
+  const blogData: BlogData[] = blogDataHandler(posts, users);
 
   if (posts.length === 0) {
     return <Error message="Could not load blogs, Please try later" />;

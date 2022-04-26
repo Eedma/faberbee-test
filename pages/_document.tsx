@@ -12,12 +12,10 @@ class MyDocument extends Document {
           />
           <meta name="keywords" content="next typescript seo" />
           <meta name="author" content="Edoardo Marzorati" />
-          <link rel="stylesheet" href="/static/styles.css" />
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
-          <link rel="stylesheet" href="/styles/Home.styles.css"></link>
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
