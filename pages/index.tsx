@@ -1,25 +1,25 @@
 import { NextPage } from "next";
 import Error from "./_error";
-import ArticleBlogCard from "../components/BlogCard";
+import BlogCard from "../components/BlogCard";
 import Layout from "../components/Layout";
 import Hero from "../components/Hero";
 import Blog from "../components/Blog";
-import Image from "next/image";
-import { useState } from "react";
-import { PostData, UsersData } from "../utils/types";
-import { fetchPosts, fetchUsers } from "../utils/fetchers";
+import { PostData, UserData, BlogData } from "../utils/types";
+import { fetchPosts, fetchUsers, blogDataHandler } from "../utils/helpers";
 
-interface Data {
-  posts: PostData[];
-  users: UsersData[];
-}
 interface BlogProps {
   posts: PostData[];
+  users: UserData[];
 }
-const Home: NextPage<BlogProps> = ({ posts }: BlogProps) => {
-  /* const [posts, setPosts] = useState([]);
+const Home: NextPage<BlogProps> = ({ posts, users }: BlogProps) => {
+  const blogData = blogDataHandler(posts, users);
+  console.log(blogData);
+  /* const data: any[] = blogDataHandler(posts, users); */
 
-  const setPostsHandler = () => {}; */
+  /*   let data: any[];
+
+  if (posts.length !== 0 && users.length !== 0) {
+  } */
 
   if (posts.length === 0) {
     return <Error message="Could not load blogs, Please try later" />;
@@ -29,8 +29,8 @@ const Home: NextPage<BlogProps> = ({ posts }: BlogProps) => {
     <Layout>
       <Hero />
       <Blog>
-        {posts.map((e: PostData, i: number) => (
-          <ArticleBlogCard post={e} key={i} />
+        {blogData.map((post: BlogData, i: number) => (
+          <BlogCard post={post} key={i} />
         ))}
       </Blog>
     </Layout>
@@ -39,10 +39,8 @@ const Home: NextPage<BlogProps> = ({ posts }: BlogProps) => {
 
 Home.getInitialProps = async () => {
   const posts = await fetchPosts();
-  /* const users = await fetchUsers();
-  const data = { ...posts, ...users };
-  console.log(data); */
-  return posts;
+  const users = await fetchUsers();
+  return { ...posts, ...users };
 };
 
 export default Home;

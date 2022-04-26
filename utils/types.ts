@@ -5,7 +5,11 @@ export interface PostData {
   body: string;
 }
 
-export interface UsersData {
-  userId: number;
+export interface UserData {
+  id: number;
+  name: string;
+}
+
+export interface BlogData extends PostData {
   name: string;
 }

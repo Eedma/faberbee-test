@@ -1,10 +1,8 @@
-import { Box, Grid, Container, Typography, Button, Stack } from "@mui/material";
-import Image from "next/image";
+import { Grid, Typography } from "@mui/material";
 import { HeroContainer, HeroText } from "./Hero.styles";
 
 const Hero = () => (
   <Grid container>
-    {/* Hero unit */}
     <HeroContainer>
       <HeroText>
         <Typography
@@ -27,15 +25,6 @@ const Hero = () => (
           the creator, etc. Make it short and sweet, but not too short so folks
           don&apos;t simply skip over it entirely.
         </Typography>
-        {/* <Stack
-          sx={{ pt: 4 }}
-          direction="row"
-          spacing={2}
-          justifyContent="center"
-        >
-          <Button variant="contained">Main call to action</Button>
-          <Button variant="outlined">Secondary action</Button>
-        </Stack> */}
       </HeroText>
     </HeroContainer>
   </Grid>
