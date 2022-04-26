@@ -1,10 +1,11 @@
 import { Container, Grid, Typography, Box } from "@mui/material";
+import { FC } from "react";
 
 type BlogProps = {
   children: React.ReactNode;
 };
 
-const Blog = ({ children }: BlogProps) => (
+const Blog: FC<BlogProps> = ({ children }) => (
   <Container maxWidth="lg">
     <Box maxWidth="sm" pt={2} pl={2}>
       <Typography variant="h2" component="h1" gutterBottom>

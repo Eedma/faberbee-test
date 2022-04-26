@@ -31,7 +31,7 @@ export const fetchUsers = async () => {
 };
 
 export const blogDataHandler = (posts: PostData[], users: UserData[]) => {
-  const blogData: any[] = posts.map((post: PostData, i: number) => {
+  const blogData: any[] = posts.map((post: PostData) => {
     for (let x = 0; x < users.length; x++) {
       if (post.userId === users[x].id) {
         return { ...post, name: users[x].name };

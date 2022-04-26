@@ -5,25 +5,30 @@ import Hero from "../components/Hero";
 import Blog from "../components/Blog";
 import { PostData, UserData, BlogData } from "../utils/types";
 import { fetchPosts, fetchUsers, blogDataHandler } from "../utils/helpers";
+import { NextPage } from "next";
 
 interface BlogProps {
   posts: PostData[];
   users: UserData[];
 }
 
-const Home = ({ posts, users }: BlogProps) => {
+const Home: NextPage<BlogProps> = ({ posts, users }) => {
   const blogData: BlogData[] = blogDataHandler(posts, users);
 
   if (posts.length === 0) {
     return <Error message="Could not load blogs, Please try later" />;
   }
 
+  if (users.length === 0) {
+    return <Error message="Could not load users, Please try later" />;
+  }
+
   return (
     <Layout>
       <Hero />
       <Blog>
-        {blogData.map((post: BlogData, i: number) => (
-          <BlogCard post={post} key={i} />
+        {blogData.map((post) => (
+          <BlogCard post={post} key={post.id} />
         ))}
       </Blog>
     </Layout>
