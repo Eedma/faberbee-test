@@ -5,13 +5,7 @@ import Card from "@mui/material/Card";
 import CardActionArea from "@mui/material/CardActionArea";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-
-export interface PostData {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
+import { PostData } from "../utils/types";
 
 type ArticleBlogCard = {
   post: PostData;
@@ -27,7 +21,7 @@ const ArticleBlogCard = ({ post }: ArticleBlogCard) => {
               {post.title}
             </Typography>
             <Typography variant="subtitle1" paragraph>
-              {post.body.substring(0, 200).concat("...")}
+              {post.body}
             </Typography>
             <Typography variant="subtitle1" color="primary">
               Continue reading...

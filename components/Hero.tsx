@@ -27,7 +27,7 @@ const Hero = () => (
           the creator, etc. Make it short and sweet, but not too short so folks
           don&apos;t simply skip over it entirely.
         </Typography>
-        <Stack
+        {/* <Stack
           sx={{ pt: 4 }}
           direction="row"
           spacing={2}
@@ -35,7 +35,7 @@ const Hero = () => (
         >
           <Button variant="contained">Main call to action</Button>
           <Button variant="outlined">Secondary action</Button>
-        </Stack>
+        </Stack> */}
       </HeroText>
     </HeroContainer>
   </Grid>

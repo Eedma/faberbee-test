@@ -1,16 +1,27 @@
 import { NextPage } from "next";
 import Error from "./_error";
-import ArticleBlogCard, { PostData } from "../components/BlogCard";
+import ArticleBlogCard from "../components/BlogCard";
 import Layout from "../components/Layout";
 import Hero from "../components/Hero";
 import Blog from "../components/Blog";
 import Image from "next/image";
+import { useState } from "react";
+import { PostData, UsersData } from "../utils/types";
+import { fetchPosts, fetchUsers } from "../utils/fetchers";
 
-interface BlogProps {
-  data: PostData[];
+interface Data {
+  posts: PostData[];
+  users: UsersData[];
 }
-const Home: NextPage<BlogProps> = ({ data }: BlogProps) => {
-  if (data.length === 0) {
+interface BlogProps {
+  posts: PostData[];
+}
+const Home: NextPage<BlogProps> = ({ posts }: BlogProps) => {
+  /* const [posts, setPosts] = useState([]);
+
+  const setPostsHandler = () => {}; */
+
+  if (posts.length === 0) {
     return <Error message="Could not load blogs, Please try later" />;
   }
 
@@ -18,8 +29,8 @@ const Home: NextPage<BlogProps> = ({ data }: BlogProps) => {
     <Layout>
       <Hero />
       <Blog>
-        {data.map((b, i) => (
-          <ArticleBlogCard post={b} key={i} />
+        {posts.map((e: PostData, i: number) => (
+          <ArticleBlogCard post={e} key={i} />
         ))}
       </Blog>
     </Layout>
@@ -27,18 +38,11 @@ const Home: NextPage<BlogProps> = ({ data }: BlogProps) => {
 };
 
 Home.getInitialProps = async () => {
-  let data;
-  try {
-    const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-    data = await res.json();
-    console.log("Number of blogs: ", data.length, data);
-  } catch (err) {
-    console.log("ERROR", err);
-    data = [];
-  }
-  return {
-    data,
-  };
+  const posts = await fetchPosts();
+  /* const users = await fetchUsers();
+  const data = { ...posts, ...users };
+  console.log(data); */
+  return posts;
 };
 
 export default Home;

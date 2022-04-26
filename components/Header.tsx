@@ -11,7 +11,6 @@ const Header = () => {
           sx={{
             flexGrow: 1,
             textTransform: "uppercase",
-            display: { xs: "none", sm: "block" },
           }}
         >
           placeholder blog
