@@ -6,7 +6,7 @@ import { BlogData } from "../utils/types";
 import { FC } from "react";
 
 type BlogCardProps = {
-  post: BlogData;
+  post: BlogData | undefined;
 };
 
 const BlogCard: FC<BlogCardProps> = ({ post }) => (
@@ -14,13 +14,13 @@ const BlogCard: FC<BlogCardProps> = ({ post }) => (
     <Card sx={{ display: "flex" }}>
       <CardContent sx={{ flex: 1 }}>
         <Typography component="h2" variant="h5">
-          {post.title}
+          {post?.title}
         </Typography>
         <Typography variant="subtitle1" paragraph>
-          {post.body}
+          {post?.body}
         </Typography>
         <Typography variant="subtitle1" color="primary">
-          {post.name}
+          {post?.name}
         </Typography>
       </CardContent>
     </Card>

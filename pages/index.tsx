@@ -13,7 +13,7 @@ interface BlogProps {
 }
 
 const Home: NextPage<BlogProps> = ({ posts, users }) => {
-  const blogData: BlogData[] = blogDataHandler(posts, users);
+  const blogData: (BlogData | undefined)[] = blogDataHandler(posts, users);
 
   if (posts.length === 0) {
     return <Error message="Could not load blogs, Please try later" />;
@@ -28,7 +28,7 @@ const Home: NextPage<BlogProps> = ({ posts, users }) => {
       <Hero />
       <Blog>
         {blogData.map((post) => (
-          <BlogCard post={post} key={post.id} />
+          <BlogCard post={post} key={post?.id} />
         ))}
       </Blog>
     </Layout>

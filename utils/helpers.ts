@@ -1,4 +1,4 @@
-import { PostData, UserData } from "./types";
+import { PostData, UserData, BlogData } from "./types";
 
 export const fetchPosts = async () => {
   let posts: PostData[];
@@ -31,7 +31,7 @@ export const fetchUsers = async () => {
 };
 
 export const blogDataHandler = (posts: PostData[], users: UserData[]) => {
-  const blogData: any[] = posts.map((post: PostData) => {
+  const blogData = posts.map((post) => {
     for (let x = 0; x < users.length; x++) {
       if (post.userId === users[x].id) {
         return { ...post, name: users[x].name };
